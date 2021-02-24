@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>3d Viewer</title>
+  <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
 <style>
 body {
   margin: 0;
@@ -24,6 +25,9 @@ body {
   <canvas id="thumbnail" onmousemove="mouseMoving(event)" onmouseleave="mouseleaving(event)"></canvas>
 
   <script>
+    $(document).on('touchmove', '#container', function () {
+        alert(222333)
+    })
     document.addEventListener("DOMContentLoaded", startup);
     function startup() {
       var url = window.location.href;
