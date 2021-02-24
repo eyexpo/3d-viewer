@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3d Viewer</title>
+<style>
+body {
+  margin: 0;
+}
+#thumbnail {
+  /*width: 440px;*/
+  /*height: 220px;*/
+  background-position: -7.115% center;
+  background-size: 7000px 220px;
+  width: 100%;
+  height: 100%;
+}
+</style>
+</head>
+<body>
+
+  <canvas id="thumbnail" onmousemove="mouseMoving(event)" onmouseleave="mouseleaving(event)"></canvas>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", startup);
+    function startup() {
+      var url = window.location.href;
+      var name = 'model';
+      var el = document.getElementById("thumbnail");
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+              results = regex.exec(url);
+      if (!results) el.style.backgroundImage = `url(out.jpeg)`;
+      if (!results[2]) el.style.backgroundImage = `url(out.jpeg)`;
+      backgroundImg = decodeURIComponent(results[2].replace(/\+/g, ' '));
+      el.style.backgroundImage = `url(${backgroundImg})`;
+    }
+    var mouseMoveOldX = 0;
+    var delta = 0;
+    function mouseMoving(evt) {
+      console.log('move', evt.pageX)
+      if ((evt.pageX + 10) < mouseMoveOldX) { // left
+        delta = delta + 7.115
+        console.log('left', evt.target.getAttribute("style", "background-position"))
+        evt.target.style.backgroundPosition = `${delta}% center`;
+        mouseMoveOldX = evt.pageX;
+      } else if ((evt.pageX - 10) > mouseMoveOldX) { // right
+        console.log('right')
+        delta = delta - 7.115
+        evt.target.style.backgroundPosition = `${delta}% center`;
+        mouseMoveOldX = evt.pageX;
+      }
+    }
+
+    function mouseleaving(evt) {
+      evt.target.style.backgroundPosition = `-7.115% center`;
+      delta = 0;
+    }
+  </script>
+
+</body>
+</html>
