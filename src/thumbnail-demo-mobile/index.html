@@ -11,22 +11,32 @@ body {
   margin: 0;
 }
 #thumbnail {
-  /*width: 440px;*/
-  /*height: 220px;*/
+  width: 440px;
+  height: 220px;
   background-position: -7.115% center;
   background-size: 7000px 220px;
-  width: 100%;
-  height: 100%;
 }
+@media screen and (max-width: 600px) {
+  #thumbnail {
+    background-position: -7.115% center;
+    background-size: 7000px 220px;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 </style>
 </head>
 <body>
 
+<div id="container">
   <canvas id="thumbnail" onmousemove="mouseMoving(event)" onmouseleave="mouseleaving(event)"></canvas>
+</div>
 
   <script>
+    var outImg = 'out.png'
     $(document).on('touchmove', '#container', function () {
-        alert(222333)
+        mouseMoving(event)
     })
     document.addEventListener("DOMContentLoaded", startup);
     function startup() {
@@ -35,8 +45,8 @@ body {
       var el = document.getElementById("thumbnail");
       var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
               results = regex.exec(url);
-      if (!results) el.style.backgroundImage = `url(out.jpeg)`;
-      if (!results[2]) el.style.backgroundImage = `url(out.jpeg)`;
+      if (!results) el.style.backgroundImage = `url(`+outImg+`)`;
+      if (!results[2]) el.style.backgroundImage = `url(`+outImg+`)`;
       backgroundImg = decodeURIComponent(results[2].replace(/\+/g, ' '));
       el.style.backgroundImage = `url(${backgroundImg})`;
     }
@@ -44,6 +54,21 @@ body {
     var delta = 0;
     function mouseMoving(evt) {
       console.log('move', evt.pageX)
+      if (delta > 106.725 || delta < -106.725) {
+              mouseMoveOldX = 0;
+              delta = 0;
+              return false;
+      }
+      // if (delta > 106.725) {
+      //     // mouseMoveOldX = 0;
+      //     delta = 106.725;
+      //     return false;
+      // }
+      // if (delta < -106.725) {
+      //     // mouseMoveOldX = 0;
+      //     delta = -106.725;
+      //     return false;
+      // }
       if ((evt.pageX + 10) < mouseMoveOldX) { // left
         delta = delta + 7.115
         console.log('left', evt.target.getAttribute("style", "background-position"))
