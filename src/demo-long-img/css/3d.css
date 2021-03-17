@@ -1,0 +1,7 @@
+body {
+    margin: 0;
+}
+#thumbnail {
+    background-size: 1600% 100%;
+    width: 100%;
+}

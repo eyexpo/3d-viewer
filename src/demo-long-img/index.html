@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3d Viewer</title>
+  <link rel="stylesheet" href="./css/3d.css">
+  <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+  <!--<script src="https://dzpublic.eyexpo.net.cn/static/dianzhen/h5/js/vr/gyroPermission.js"></script>-->
+</head>
+<body>
+
+<div id="container">
+  <canvas id="thumbnail" onmousemove="mouseMoving(event)"></canvas>
+</div>
+
+<script type="text/javascript" src="./js/3d.js"></script>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/vConsole/3.3.4/vconsole.min.js"></script>
+<script>
+    // $('body').on('click',function(){
+    //     // ios 提示授权， 返回的是一个 promise
+    //     window.DeviceOrientationEvent.requestPermission()
+    //         .then(state => {
+    //             if(state === "granted"){//允许
+    //                 alert("允许使用陀螺仪：",state)
+    //             }else if(state === "denied"){//拒绝
+    //                 alert("拒绝使用陀螺仪：",state)
+    //             }else if(state === "prompt"){
+    //                 alert("用户进行其他操作：",state)
+    //             }
+    //         })
+    // })
+    // // 获取手机陀螺仪
+    // var updateGravity = function(event) {
+    //
+    //     console.log("alpha:",event.alpha); // X
+    //     console.log("beta:",event.beta); // Y
+    //     console.log("gamma:",event.gamma); // Z
+    //
+    // };
+    //
+    // // 监听 window 的 deviceorientation 事件
+    // window.addEventListener('deviceorientation', updateGravity, false);
+
+
+    var vConsole = new VConsole();
+
+</script>
