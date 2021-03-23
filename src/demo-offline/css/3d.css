@@ -1,0 +1,14 @@
+* {
+    touch-action: pan-y;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 600px) {
+    #img img {
+        width: 100%;
+    }
+}
